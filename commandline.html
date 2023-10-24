@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLI &mdash; amazon-textract-textractor 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Textract Caller" href="textractor.html" />
+    <link rel="prev" title="Going further" href="notebooks/going_further.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> amazon-textract-textractor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_in_lambda.html">Using Textractor in AWS Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#available-apis">Available APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-document-text">Getting document text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing-a-directory-of-files">Processing a directory of files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-the-output">Visualizing the output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#positional-arguments">Positional Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sub-commands">Sub-commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detect-document-text">detect-document-text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-document-text-detection">start-document-text-detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyze-document">analyze-document</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-document-analysis">start-document-analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyze-expense">analyze-expense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-expense-analysis">start-expense-analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyze-id">analyze-id</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-result">get-result</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="textractor.html">Textract Caller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.parsers.html">Entity Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.entities.html">Document Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.visualizers.html">Entity Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.data.html">Constants</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amazon-textract-textractor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>CLI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/commandline.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="cli">
+<h1>CLI<a class="headerlink" href="#cli" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Textractor comes with its very own command line interface that aims to be easier to use than the default <cite>boto3</cite> interface by adding several quality of life improvements.</p>
+<p>First install the package using <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">amazon-textract-textractor</span></code> make sure that you Python bin directory is added to PATH otherwise it will not find the executable. If you are not using a virtual environment this will probably be the case.</p>
+<section id="available-apis">
+<h2>Available APIs<a class="headerlink" href="#available-apis" title="Permalink to this heading"></a></h2>
+<p><code class="code docutils literal notranslate"><span class="pre">Textractor</span></code> supports all Textract APIs and follow their official names as described here: <a class="reference external" href="https://docs.aws.amazon.com/textract/latest/dg/API_Operations.html">https://docs.aws.amazon.com/textract/latest/dg/API_Operations.html</a>. We use a single subcommand to fetch the results named <code class="code docutils literal notranslate"><span class="pre">GetResult</span></code>.</p>
+<p>Synchronous APIs:</p>
+<ul class="simple">
+<li><p>DetectDocumentText/detect-document-text (Returns words and lines)</p></li>
+<li><p>AnalyzeDocument/analyze-document (Returns Forms, Tables and Query results)</p></li>
+<li><p>AnalyzeExpense/analyze-expense (Returns standardized fields for invoices)</p></li>
+<li><p>AnalyzeID/analyze-id (Returns standardized fields for driver’s license and passports)</p></li>
+</ul>
+<p>Asynchronous APIs:</p>
+<ul class="simple">
+<li><p>StartDocumentTextDetection/start-document-text-detection</p></li>
+<li><p>StartDocumentAnalysis/start-document-analysis</p></li>
+<li><p>StartExpenseAnalysis/start-expense-analysis</p></li>
+</ul>
+</section>
+<section id="getting-document-text">
+<h2>Getting document text<a class="headerlink" href="#getting-document-text" title="Permalink to this heading"></a></h2>
+<p>Now lets say you have a file and you wish to run OCR on it:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">textractor</span> <span class="pre">detect-document-text</span> <span class="pre">your_file.png</span> <span class="pre">output.json</span></code></p>
+<p>This will call the Textract API and save the output to <code class="code docutils literal notranslate"><span class="pre">output.json</span></code>. You could use the Textractor python module to post-process those response afterwards.</p>
+</section>
+<section id="processing-a-directory-of-files">
+<h2>Processing a directory of files<a class="headerlink" href="#processing-a-directory-of-files" title="Permalink to this heading"></a></h2>
+<p>Now if instead of a file, you wished to process an entire directory of files. You could call the above on every file in the directory, but this would prove to be a very long process. Instead you can leverage Textract’s ability to scale to your workload using the asynchronous API.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">ls</span> <span class="pre">your_dir/</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">-I{}</span> <span class="pre">textractor</span> <span class="pre">start-document-text-detection</span> <span class="pre">{}</span> <span class="pre">--s3-upload-path</span> <span class="pre">s3://your-bucket/your-prefix/{}</span></code></p>
+<p>You can also parallelize it simply by adding -P8 (for 8 concurrent processes).</p>
+<p><code class="code docutils literal notranslate"><span class="pre">ls</span> <span class="pre">your_dir/</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">-P8</span> <span class="pre">-I{}</span> <span class="pre">textractor</span> <span class="pre">start-document-text-detection</span> <span class="pre">{}</span> <span class="pre">--s3-upload-path</span> <span class="pre">s3://your-bucket/your-prefix/{}</span> <span class="pre">&gt;</span> <span class="pre">output.txt</span></code></p>
+<p>You will notice that all you have in output.txt are UUID like this: <code class="code docutils literal notranslate"><span class="pre">628e39089ffa1b52d62d980ec1cf4f62cb7f785c83a708b2e17ebaaf21ad0d61</span></code>. Those are JobIDs and can be used to fetch the output of asynchronous operations.</p>
+<p>Wait a few minutes (dependending on the number of files your processed) and then fetch the result  with <code class="code docutils literal notranslate"><span class="pre">GetResult</span></code>.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">cat</span> <span class="pre">output.txt</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">-I{}</span> <span class="pre">textractor</span> <span class="pre">get-result</span> <span class="pre">{}</span> <span class="pre">DETECT_TEXT</span> <span class="pre">{}.json</span></code></p>
+<p>Using <code class="code docutils literal notranslate"><span class="pre">-P8</span></code> would make the above faster, but be careful not to increase the concurrent process count too much as you might run into rate limiting issues (See <a class="reference external" href="https://docs.aws.amazon.com/textract/latest/dg/limits.html">https://docs.aws.amazon.com/textract/latest/dg/limits.html</a> for more details).</p>
+</section>
+<section id="visualizing-the-output">
+<h2>Visualizing the output<a class="headerlink" href="#visualizing-the-output" title="Permalink to this heading"></a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">textractor</span></code> CLI allows you to overlay the output of Amazon Textract on top of an image for troubleshooting. It is only available for synchronous APIs (DetectDocumentText, AnalyzeDocument) and allows you to visualize words, lines, key and values, and tables.</p>
+<p>In this example we will overlay words and tables on top of the <code class="code docutils literal notranslate"><span class="pre">tests/fixtures/amzn_q2.png</span></code> file. The image will be created in the same directory as the <code class="code docutils literal notranslate"><span class="pre">output.json</span></code> file under the name <code class="code docutils literal notranslate"><span class="pre">output.json.png</span></code>.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">textractor</span> <span class="pre">analyze-document</span> <span class="pre">tests/fixtures/amzn_q2.png</span> <span class="pre">output.json</span> <span class="pre">--features</span> <span class="pre">TABLES</span> <span class="pre">--overlay</span> <span class="pre">WORDS</span> <span class="pre">TABLES</span></code></p>
+<p>This will yield the following (click to enlarge):</p>
+<a class="reference internal image-reference" href="_images/overlayer.png"><img alt="Overlayer output" src="_images/overlayer.png" style="width: 600px;" /></a>
+<p>This document has a lot of small words, making it difficult to read. You can add <code class="code docutils literal notranslate"><span class="pre">--font-size-ratio</span></code> to the command to increase the font size.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">textractor</span> <span class="pre">analyze-document</span> <span class="pre">tests/fixtures/amzn_q2.png</span> <span class="pre">output.json</span> <span class="pre">--features</span> <span class="pre">TABLES</span> <span class="pre">--overlay</span> <span class="pre">WORDS</span> <span class="pre">TABLES</span> <span class="pre">--font-size-ratio</span> <span class="pre">1.0</span></code> (default it 0.75)</p>
+<a class="reference internal image-reference" href="_images/overlayer_bigger.png"><img alt="Overlayer output bigger" src="_images/overlayer_bigger.png" style="width: 600px;" /></a>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading"></a></h2>
+<p><p>Commandline interface for the Textractor library</p>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">textractor</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                  <span class="p">{</span><span class="n">detect</span><span class="o">-</span><span class="n">document</span><span class="o">-</span><span class="n">text</span><span class="p">,</span><span class="n">start</span><span class="o">-</span><span class="n">document</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">detection</span><span class="p">,</span><span class="n">analyze</span><span class="o">-</span><span class="n">document</span><span class="p">,</span><span class="n">start</span><span class="o">-</span><span class="n">document</span><span class="o">-</span><span class="n">analysis</span><span class="p">,</span><span class="n">analyze</span><span class="o">-</span><span class="n">expense</span><span class="p">,</span><span class="n">start</span><span class="o">-</span><span class="n">expense</span><span class="o">-</span><span class="n">analysis</span><span class="p">,</span><span class="n">analyze</span><span class="o">-</span><span class="nb">id</span><span class="p">,</span><span class="n">get</span><span class="o">-</span><span class="n">result</span><span class="p">}</span>
+                  <span class="o">...</span>
+</pre></div>
+</div>
+<section id="positional-arguments">
+<h3>Positional Arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this heading"></a></h3>
+<dl class="option-list">
+<dt><kbd>subcommand</kbd></dt>
+<dd><p>Possible choices: detect-document-text, start-document-text-detection, analyze-document, start-document-analysis, analyze-expense, start-expense-analysis, analyze-id, get-result</p>
+<p>Sub-command help</p>
+</dd>
+</dl>
+</section>
+<section id="Sub-commands">
+<h3>Sub-commands<a class="headerlink" href="#Sub-commands" title="Permalink to this heading"></a></h3>
+<section id="detect-document-text">
+<h4>detect-document-text<a class="headerlink" href="#detect-document-text" title="Permalink to this heading"></a></h4>
+<p>Synchronous API for Optical Character Recognition</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">detect</span><span class="o">-</span><span class="n">document</span><span class="o">-</span><span class="n">text</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                                <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                                <span class="p">[</span><span class="o">--</span><span class="nb">print</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                                <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="p">]</span>
+                                <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">path</span> <span class="n">LINEARIZE_CONFIG_PATH</span><span class="p">]</span>
+                                <span class="p">[</span><span class="o">--</span><span class="n">overlay</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">WORDS</span><span class="p">,</span><span class="n">LINES</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURE</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">WORDS</span><span class="p">,</span><span class="n">LINES</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURE</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                                <span class="p">[</span><span class="o">--</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">ratio</span> <span class="n">FONT_SIZE_RATIO</span><span class="p">]</span>
+                                <span class="n">file_source</span> <span class="n">output_file</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat1">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat1" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type JPEG, PNG, TIFF, BMP. Can be an S3 path</p>
+</dd>
+<dt><kbd>output_file</kbd></dt>
+<dd><p>Output file to save the response, can be an S3 path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+<dt><kbd>--print</kbd></dt>
+<dd><p>Possible choices: ALL, TEXT, TABLES, FORMS, QUERIES, EXPENSES, SIGNATURES, IDS</p>
+<p>Print the output in a readable format</p>
+</dd>
+<dt><kbd>--linearize</kbd></dt>
+<dd><p>Print the linearized document output</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--linearize-config-path</kbd></dt>
+<dd><p>Configuration file for the linearization</p>
+</dd>
+<dt><kbd>--overlay</kbd></dt>
+<dd><p>Possible choices: ALL, WORDS, LINES, TABLES, FORMS, QUERIES, SIGNATURE</p>
+<p>Save an image of the document with the words, lines, form fields, and tables overlayed on top</p>
+</dd>
+<dt><kbd>--font-size-ratio</kbd></dt>
+<dd><p>Scales the text up or down, default is 0.75, which would be half the pixel height</p>
+<p>Default: 0.75</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="start-document-text-detection">
+<h4>start-document-text-detection<a class="headerlink" href="#start-document-text-detection" title="Permalink to this heading"></a></h4>
+<p>Asynchronous API for Optical Character Recognition</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">start</span><span class="o">-</span><span class="n">document</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">detection</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+                                         <span class="p">[</span><span class="o">--</span><span class="n">s3</span><span class="o">-</span><span class="n">upload</span><span class="o">-</span><span class="n">path</span> <span class="n">S3_UPLOAD_PATH</span><span class="p">]</span>
+                                         <span class="p">[</span><span class="o">--</span><span class="n">s3</span><span class="o">-</span><span class="n">output</span><span class="o">-</span><span class="n">path</span> <span class="n">S3_OUTPUT_PATH</span><span class="p">]</span>
+                                         <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                                         <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                                         <span class="n">file_source</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat2">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat2" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type PDF, JPEG, PNG, TIFF, BMP. The file has to be in S3, you you can provide an S3 path with –upload-s3-path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat1">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat1" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--s3-upload-path</kbd></dt>
+<dd><p>Path to upload the input files to, required if input_file is not an S3 path</p>
+</dd>
+<dt><kbd>--s3-output-path</kbd></dt>
+<dd><p>Path to write the response to</p>
+</dd>
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="analyze-document">
+<h4>analyze-document<a class="headerlink" href="#analyze-document" title="Permalink to this heading"></a></h4>
+<p>Synchronous API for document analysis (forms, tables, queries, and signatures)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">analyze</span><span class="o">-</span><span class="n">document</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">--</span><span class="n">features</span>
+                            <span class="p">{</span><span class="n">FORMS</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">LAYOUT</span><span class="p">}</span>
+                            <span class="p">[{</span><span class="n">FORMS</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">LAYOUT</span><span class="p">}</span> <span class="o">...</span><span class="p">]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">queries</span> <span class="n">QUERIES</span> <span class="p">[</span><span class="n">QUERIES</span> <span class="o">...</span><span class="p">]]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="nb">print</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="p">]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">path</span> <span class="n">LINEARIZE_CONFIG_PATH</span><span class="p">]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">overlay</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">WORDS</span><span class="p">,</span><span class="n">LINES</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURE</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">WORDS</span><span class="p">,</span><span class="n">LINES</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURE</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                            <span class="p">[</span><span class="o">--</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">ratio</span> <span class="n">FONT_SIZE_RATIO</span><span class="p">]</span>
+                            <span class="n">file_source</span> <span class="n">output_file</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat3">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat3" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type JPEG, PNG, TIFF, BMP. Can be an S3 path</p>
+</dd>
+<dt><kbd>output_file</kbd></dt>
+<dd><p>Output file to save the response, can be an S3 path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat2">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat2" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--features</kbd></dt>
+<dd><p>Possible choices: FORMS, TABLES, QUERIES, SIGNATURES, LAYOUT</p>
+</dd>
+<dt><kbd>--queries</kbd></dt>
+<dd><p>List of queries, use quotes (”) to escape spaces</p>
+</dd>
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+<dt><kbd>--print</kbd></dt>
+<dd><p>Possible choices: ALL, TEXT, TABLES, FORMS, QUERIES, EXPENSES, SIGNATURES, IDS</p>
+<p>Print the output in a readable format</p>
+</dd>
+<dt><kbd>--linearize</kbd></dt>
+<dd><p>Print the linearized document output</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--linearize-config-path</kbd></dt>
+<dd><p>Configuration file for the linearization</p>
+</dd>
+<dt><kbd>--overlay</kbd></dt>
+<dd><p>Possible choices: ALL, WORDS, LINES, TABLES, FORMS, QUERIES, SIGNATURE</p>
+<p>Save an image of the document with the words, lines, form fields, and tables overlayed on top</p>
+</dd>
+<dt><kbd>--font-size-ratio</kbd></dt>
+<dd><p>Scales the text up or down, default is 0.75, which would be half the pixel height</p>
+<p>Default: 0.75</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="start-document-analysis">
+<h4>start-document-analysis<a class="headerlink" href="#start-document-analysis" title="Permalink to this heading"></a></h4>
+<p>Asynchronous API for document analysis (forms, tables, queries, and signatures)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">start</span><span class="o">-</span><span class="n">document</span><span class="o">-</span><span class="n">analysis</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">--</span><span class="n">features</span>
+                                   <span class="p">{</span><span class="n">FORMS</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">LAYOUT</span><span class="p">}</span>
+                                   <span class="p">[{</span><span class="n">FORMS</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">LAYOUT</span><span class="p">}</span> <span class="o">...</span><span class="p">]</span>
+                                   <span class="p">[</span><span class="o">--</span><span class="n">queries</span> <span class="n">QUERIES</span> <span class="p">[</span><span class="n">QUERIES</span> <span class="o">...</span><span class="p">]]</span>
+                                   <span class="p">[</span><span class="o">--</span><span class="n">s3</span><span class="o">-</span><span class="n">upload</span><span class="o">-</span><span class="n">path</span> <span class="n">S3_UPLOAD_PATH</span><span class="p">]</span>
+                                   <span class="p">[</span><span class="o">--</span><span class="n">s3</span><span class="o">-</span><span class="n">output</span><span class="o">-</span><span class="n">path</span> <span class="n">S3_OUTPUT_PATH</span><span class="p">]</span>
+                                   <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                                   <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                                   <span class="n">file_source</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat4">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat4" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type PDF, JPEG, PNG, TIFF, BMP. The file has to be in S3, you you can provide an S3 path with –upload-s3-path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat3">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat3" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--features</kbd></dt>
+<dd><p>Possible choices: FORMS, TABLES, QUERIES, SIGNATURES, LAYOUT</p>
+</dd>
+<dt><kbd>--queries</kbd></dt>
+<dd><p>List of queries, use quotes (”) to escape spaces</p>
+</dd>
+<dt><kbd>--s3-upload-path</kbd></dt>
+<dd><p>Path to upload the input files to, required if input_file is not an S3 path</p>
+</dd>
+<dt><kbd>--s3-output-path</kbd></dt>
+<dd><p>Path to write the response to</p>
+</dd>
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="analyze-expense">
+<h4>analyze-expense<a class="headerlink" href="#analyze-expense" title="Permalink to this heading"></a></h4>
+<p>Synchronous API for expense analysis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">analyze</span><span class="o">-</span><span class="n">expense</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                           <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                           <span class="p">[</span><span class="o">--</span><span class="nb">print</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                           <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="p">]</span>
+                           <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">path</span> <span class="n">LINEARIZE_CONFIG_PATH</span><span class="p">]</span>
+                           <span class="p">[</span><span class="o">--</span><span class="n">overlay</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">WORDS</span><span class="p">,</span><span class="n">LINES</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURE</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">WORDS</span><span class="p">,</span><span class="n">LINES</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">SIGNATURE</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                           <span class="p">[</span><span class="o">--</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">ratio</span> <span class="n">FONT_SIZE_RATIO</span><span class="p">]</span>
+                           <span class="n">file_source</span> <span class="n">output_file</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat5">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat5" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type JPEG, PNG, TIFF, BMP. Can be an S3 path</p>
+</dd>
+<dt><kbd>output_file</kbd></dt>
+<dd><p>Output file to save the response, can be an S3 path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat4">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat4" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+<dt><kbd>--print</kbd></dt>
+<dd><p>Possible choices: ALL, TEXT, TABLES, FORMS, QUERIES, EXPENSES, SIGNATURES, IDS</p>
+<p>Print the output in a readable format</p>
+</dd>
+<dt><kbd>--linearize</kbd></dt>
+<dd><p>Print the linearized document output</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--linearize-config-path</kbd></dt>
+<dd><p>Configuration file for the linearization</p>
+</dd>
+<dt><kbd>--overlay</kbd></dt>
+<dd><p>Possible choices: ALL, WORDS, LINES, TABLES, FORMS, QUERIES, SIGNATURE</p>
+<p>Save an image of the document with the words, lines, form fields, and tables overlayed on top</p>
+</dd>
+<dt><kbd>--font-size-ratio</kbd></dt>
+<dd><p>Scales the text up or down, default is 0.75, which would be half the pixel height</p>
+<p>Default: 0.75</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="start-expense-analysis">
+<h4>start-expense-analysis<a class="headerlink" href="#start-expense-analysis" title="Permalink to this heading"></a></h4>
+<p>Asynchronous API for expense analysis</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">start</span><span class="o">-</span><span class="n">expense</span><span class="o">-</span><span class="n">analysis</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">s3</span><span class="o">-</span><span class="n">upload</span><span class="o">-</span><span class="n">path</span> <span class="n">S3_UPLOAD_PATH</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">--</span><span class="n">s3</span><span class="o">-</span><span class="n">output</span><span class="o">-</span><span class="n">path</span> <span class="n">S3_OUTPUT_PATH</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                                  <span class="n">file_source</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat6">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat6" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type PDF, JPEG, PNG, TIFF, BMP. The file has to be in S3, you you can provide an S3 path with –upload-s3-path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat5">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat5" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--s3-upload-path</kbd></dt>
+<dd><p>Path to upload the input files to, required if input_file is not an S3 path</p>
+</dd>
+<dt><kbd>--s3-output-path</kbd></dt>
+<dd><p>Path to write the response to</p>
+</dd>
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="analyze-id">
+<h4>analyze-id<a class="headerlink" href="#analyze-id" title="Permalink to this heading"></a></h4>
+<p>API for identity document analysis (supports driver’s license and passports).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">analyze</span><span class="o">-</span><span class="nb">id</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="nb">print</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                      <span class="n">file_source</span> <span class="n">output_file</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat7">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat7" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>file_source</kbd></dt>
+<dd><p>File to process, must be of type JPEG, PNG, TIFF, BMP. Can be an S3 path</p>
+</dd>
+<dt><kbd>output_file</kbd></dt>
+<dd><p>Output file to save the response, can be an S3 path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat6">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat6" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+<dt><kbd>--print</kbd></dt>
+<dd><p>Possible choices: ALL, TEXT, TABLES, FORMS, QUERIES, EXPENSES, SIGNATURES, IDS</p>
+<p>Print the output in a readable format</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="get-result">
+<h4>get-result<a class="headerlink" href="#get-result" title="Permalink to this heading"></a></h4>
+<p>Try to fetch the result for a given job id</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">textractor</span> <span class="n">get</span><span class="o">-</span><span class="n">result</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span> <span class="n">PROFILE_NAME</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="n">region</span><span class="o">-</span><span class="n">name</span> <span class="n">REGION_NAME</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="nb">print</span> <span class="p">{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="p">[{</span><span class="n">ALL</span><span class="p">,</span><span class="n">TEXT</span><span class="p">,</span><span class="n">TABLES</span><span class="p">,</span><span class="n">FORMS</span><span class="p">,</span><span class="n">QUERIES</span><span class="p">,</span><span class="n">EXPENSES</span><span class="p">,</span><span class="n">SIGNATURES</span><span class="p">,</span><span class="n">IDS</span><span class="p">}</span> <span class="o">...</span><span class="p">]]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="n">linearize</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">path</span> <span class="n">LINEARIZE_CONFIG_PATH</span><span class="p">]</span>
+                      <span class="n">job_id</span> <span class="p">{</span><span class="n">DETECT_TEXT</span><span class="p">,</span><span class="n">ANALYZE</span><span class="p">,</span><span class="n">EXPENSE</span><span class="p">}</span> <span class="n">output_file</span>
+</pre></div>
+</div>
+<section id="positional-arguments_repeat8">
+<h5>Positional Arguments<a class="headerlink" href="#positional-arguments_repeat8" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>job_id</kbd></dt>
+<dd><p>Job ID, as returned by any of the asynchronous functions</p>
+</dd>
+<dt><kbd>api</kbd></dt>
+<dd><p>Possible choices: DETECT_TEXT, ANALYZE, EXPENSE</p>
+<p>API used to make the request</p>
+</dd>
+<dt><kbd>output_file</kbd></dt>
+<dd><p>Output file to save the response, can be an S3 path</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat7">
+<h5>Named Arguments<a class="headerlink" href="#named-arguments_repeat7" title="Permalink to this heading"></a></h5>
+<dl class="option-list">
+<dt><kbd>--profile-name</kbd></dt>
+<dd><p>AWS profile name to use for the request</p>
+</dd>
+<dt><kbd>--region-name</kbd></dt>
+<dd><p>AWS region to use for the request</p>
+</dd>
+<dt><kbd>--print</kbd></dt>
+<dd><p>Possible choices: ALL, TEXT, TABLES, FORMS, QUERIES, EXPENSES, SIGNATURES, IDS</p>
+<p>Print the output in a readable format</p>
+</dd>
+<dt><kbd>--linearize</kbd></dt>
+<dd><p>Print the linearized document output</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--linearize-config-path</kbd></dt>
+<dd><p>Configuration file for the linearization</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notebooks/going_further.html" class="btn btn-neutral float-left" title="Going further" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="textractor.html" class="btn btn-neutral float-right" title="Textract Caller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Amazon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

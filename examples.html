@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; amazon-textract-textractor 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Textract OCR" href="notebooks/simple_ocr.html" />
+    <link rel="prev" title="Using Textractor in AWS Lambda" href="using_in_lambda.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> amazon-textract-textractor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_in_lambda.html">Using Textractor in AWS Lambda</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/simple_ocr.html">Using Textract OCR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/parsing_an_existing_response.html">Parsing an existing response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/introduction_to_searching.html">Introduction to searching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/visualizing_results.html">Visualizing Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html">Word Occurence within Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/exporting_form_data.html">Exporting Form Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html">Table data extraction to Excel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_expense.html">Using AnalyzeExpense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_id.html">Using AnalyzeID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_queries.html">Using Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/layout_prediction.html">Using Layout Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/interfacing_with_trp2.html">Interfacing with trp2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/signature_detection.html">Signature Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/going_further.html">Going further</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">CLI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="textractor.html">Textract Caller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.parsers.html">Entity Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.entities.html">Document Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.visualizers.html">Entity Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.data.html">Constants</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amazon-textract-textractor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/simple_ocr.html">Using Textract OCR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/simple_ocr.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/simple_ocr.html#Synchronous-example">Synchronous example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/simple_ocr.html#Asynchronous-example">Asynchronous example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/simple_ocr.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/parsing_an_existing_response.html">Parsing an existing response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/parsing_an_existing_response.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/parsing_an_existing_response.html#Not-calling-Textract">Not calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/parsing_an_existing_response.html#Instantiating-from-a-dictionary">Instantiating from a dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/parsing_an_existing_response.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/introduction_to_searching.html">Introduction to searching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/introduction_to_searching.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/introduction_to_searching.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/introduction_to_searching.html#Saving-on-costs">Saving on costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/introduction_to_searching.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/visualizing_results.html">Visualizing Results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/visualizing_results.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/visualizing_results.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/visualizing_results.html#Visualizing-the-result-of-a-search">Visualizing the result of a search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/visualizing_results.html#Visualizing-Tables">Visualizing Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/visualizing_results.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/finding_words_within_a_document.html">Word Occurence within Document</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html#Retrieving-word-occurences">Retrieving word occurences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html#Find-words-on-document-page-through-visualize()">Find words on document page through visualize()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html#What-if-you-don’t-want-to-use-PyTorch?">What if you don’t want to use PyTorch?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/finding_words_within_a_document.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/exporting_form_data.html">Exporting Form Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/exporting_form_data.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/exporting_form_data.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/exporting_form_data.html#Retrieving-key-values-and-exporting-as-CSV">Retrieving key-values and exporting as CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/exporting_form_data.html#View-CSV-as-dataframe">View CSV as dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/exporting_form_data.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/table_data_to_various_formats.html">Table data extraction to Excel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html#Table-as-a-pandas-DataFrame">Table as a pandas DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html#Table-as-CSV">Table as CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html#Table-to-Microsoft-Office-Excel">Table to Microsoft Office Excel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/table_data_to_various_formats.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/using_analyze_expense.html">Using AnalyzeExpense</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_expense.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_expense.html#Parsing-the-output">Parsing the output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/using_analyze_id.html">Using AnalyzeID</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_id.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_id.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_id.html#Parsing-the-output">Parsing the output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_analyze_id.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/using_queries.html">Using Queries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_queries.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_queries.html#Examples-of-queries">Examples of queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_queries.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/using_queries.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/layout_prediction.html">Using Layout Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/layout_prediction.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/layout_prediction.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/layout_prediction.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/interfacing_with_trp2.html">Interfacing with trp2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/interfacing_with_trp2.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/interfacing_with_trp2.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/interfacing_with_trp2.html#Getting-the-trp2-document">Getting the trp2 document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/interfacing_with_trp2.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/signature_detection.html">Signature Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/signature_detection.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/signature_detection.html#Examples-of-queries">Examples of queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/signature_detection.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/signature_detection.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/going_further.html">Going further</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/going_further.html#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/going_further.html#Calling-Textract">Calling Textract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/going_further.html#Response-dictionary">Response dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/going_further.html#Finer-grain-results">Finer-grain results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/going_further.html#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="using_in_lambda.html" class="btn btn-neutral float-left" title="Using Textractor in AWS Lambda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notebooks/simple_ocr.html" class="btn btn-neutral float-right" title="Using Textract OCR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Amazon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

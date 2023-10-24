@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Textractor in AWS Lambda &mdash; amazon-textract-textractor 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> amazon-textract-textractor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Textractor in AWS Lambda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step">Step-by-step</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">CLI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="textractor.html">Textract Caller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.parsers.html">Entity Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.entities.html">Document Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.visualizers.html">Entity Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textractor.data.html">Constants</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amazon-textract-textractor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Using Textractor in AWS Lambda</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/using_in_lambda.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="using-textractor-in-aws-lambda">
+<h1>Using Textractor in AWS Lambda<a class="headerlink" href="#using-textractor-in-aws-lambda" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Textractor uses Pillow for image manipulation which is a compiled dependency (i.e. not pure Python).
+While we encourage you to build your own lambda layers, we received several requests mentioning that the process tedious,
+which is why we also offer precompiled layers as zip files that you can directly upload to lambda.</p>
+<p>The precompiled layers are rebuilt on release and can be downloaded here <a class="reference external" href="https://github.com/aws-samples/amazon-textract-textractor/actions/workflows/lambda_layers.yml">https://github.com/aws-samples/amazon-textract-textractor/actions/workflows/lambda_layers.yml</a>.</p>
+<section id="step-by-step">
+<h2>Step-by-step<a class="headerlink" href="#step-by-step" title="Permalink to this heading"></a></h2>
+<p>We provide a step by step through the AWS Console, but note that proceeding with the AWS CLI would also work. For brevity we assume that you already have an existing lambda.
+You can find an excellent guide on how to create a lambda function here:
+<a class="reference external" href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html">https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html</a>. Note that your lambda function will need
+to have Textract access. Since we are targeting a wide range of use cases we will use the AmazonTextractFullAccess
+policy. We recommend that you review your lambda function and tailor the permission to your specific use case.</p>
+<ol class="arabic">
+<li><p>Download the precompiled layers from the GitHub Actions workflow. <a class="reference external" href="https://github.com/aws-samples/amazon-textract-textractor/actions/workflows/lambda_layers.yml">https://github.com/aws-samples/amazon-textract-textractor/actions/workflows/lambda_layers.yml</a></p>
+<ol class="loweralpha simple">
+<li><p>Navigate to the page</p></li>
+<li><p>Click on “Lambda Layers”</p></li>
+</ol>
+<img alt="_images/1b.png" src="_images/1b.png" />
+<ol class="loweralpha simple" start="3">
+<li><p>Scroll to the bottom of the page and download the package that matches your Python installation. Packages with the <cite>-pdf</cite> suffix contains <cite>pdf2image</cite> and allow you to process PDF documents.</p></li>
+</ol>
+<img alt="_images/1c.png" src="_images/1c.png" />
+</li>
+<li><p>In your AWS Console, navigate to “Lambda” and click “Layers” in the sidebar to the left.</p>
+<img alt="_images/2.png" src="_images/2.png" />
+<ol class="loweralpha simple">
+<li><p>Click “Create layer”</p></li>
+</ol>
+<img alt="_images/2a.png" src="_images/2a.png" />
+<ol class="loweralpha simple" start="2">
+<li><p>Fill-in the form and upload the .zip file you downloaded in step 1.</p></li>
+</ol>
+<img alt="_images/2b.png" src="_images/2b.png" />
+<ol class="loweralpha simple" start="3">
+<li><p>Click “Create”</p></li>
+</ol>
+</li>
+<li><p>Navigate to your lambda</p>
+<ol class="loweralpha simple">
+<li><p>Scroll down and click “Add a layer”</p></li>
+</ol>
+<img alt="_images/3a.png" src="_images/3a.png" />
+<ol class="loweralpha simple" start="2">
+<li><p>Choose “Custom layers” and pick your amazon-textract-textractor layer</p></li>
+<li><p>Click “Add”</p></li>
+</ol>
+<img alt="_images/3c.png" src="_images/3c.png" />
+</li>
+<li><p>Update your code to use Textractor</p>
+<ol class="loweralpha simple">
+<li><p>If using the PDF version you have to update the <cite>PATH</cite> and <cite>LD_LIBRARY_PATH</cite> environment variables through the lambda function configuration interface or directly in code with the <cite>os</cite> module:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/opt/python/bin/:</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/opt/python/bin/:</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Amazon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
