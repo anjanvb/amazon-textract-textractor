@@ -15,7 +15,10 @@ Examples
    notebooks/using_analyze_id
    notebooks/using_queries
    notebooks/layout_analysis
+   notebooks/tabular_data_linearization
+   notebooks/tabular_data_linearization_continued
    notebooks/layout_analysis_for_text_linearization
+   notebooks/document_linearization_to_markdown_or_html
    notebooks/textractor_for_large_language_models
    notebooks/interfacing_with_trp2
    notebooks/signature_detection
